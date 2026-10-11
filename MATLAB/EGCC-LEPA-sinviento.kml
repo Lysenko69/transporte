@@ -43,6 +43,7 @@
 			<tessellate>1</tessellate>
 			<altitudeMode>clampToGround</altitudeMode>
 			<coordinates>
+			-2.334167,53.139444,0.000000 
 			-2.220144,53.008458,0.000000 
 			-1.663725,52.356678,0.000000 
 			-1.361353,51.771389,0.000000 
@@ -74,8 +75,17 @@
 	</MultiGeometry>
 </Placemark>
 <Placemark>
-	<name>UTXA</name>
+	<name>SANBA</name>
 	<description>Crucero wp #1</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.334167,53.139444,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>UTXA</name>
+	<description>Crucero wp #2</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -84,7 +94,7 @@
 </Placemark>
 <Placemark>
 	<name>HON</name>
-	<description>Crucero wp #2</description>
+	<description>Crucero wp #3</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -93,7 +103,7 @@
 </Placemark>
 <Placemark>
 	<name>KIDLI</name>
-	<description>Crucero wp #3</description>
+	<description>Crucero wp #4</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -102,7 +112,7 @@
 </Placemark>
 <Placemark>
 	<name>DIGUT</name>
-	<description>Crucero wp #4</description>
+	<description>Crucero wp #5</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -111,7 +121,7 @@
 </Placemark>
 <Placemark>
 	<name>CPT</name>
-	<description>Crucero wp #5</description>
+	<description>Crucero wp #6</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -120,7 +130,7 @@
 </Placemark>
 <Placemark>
 	<name>ALHAD</name>
-	<description>Crucero wp #6</description>
+	<description>Crucero wp #7</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -129,7 +139,7 @@
 </Placemark>
 <Placemark>
 	<name>VAPID</name>
-	<description>Crucero wp #7</description>
+	<description>Crucero wp #8</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -138,7 +148,7 @@
 </Placemark>
 <Placemark>
 	<name>GWC</name>
-	<description>Crucero wp #8</description>
+	<description>Crucero wp #9</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -147,7 +157,7 @@
 </Placemark>
 <Placemark>
 	<name>SITET</name>
-	<description>Crucero wp #9</description>
+	<description>Crucero wp #10</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -156,7 +166,7 @@
 </Placemark>
 <Placemark>
 	<name>ETRAT</name>
-	<description>Crucero wp #10</description>
+	<description>Crucero wp #11</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -165,7 +175,7 @@
 </Placemark>
 <Placemark>
 	<name>DVL</name>
-	<description>Crucero wp #11</description>
+	<description>Crucero wp #12</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -174,7 +184,7 @@
 </Placemark>
 <Placemark>
 	<name>LGL</name>
-	<description>Crucero wp #12</description>
+	<description>Crucero wp #13</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -183,7 +193,7 @@
 </Placemark>
 <Placemark>
 	<name>SORAP</name>
-	<description>Crucero wp #13</description>
+	<description>Crucero wp #14</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -192,7 +202,7 @@
 </Placemark>
 <Placemark>
 	<name>BENAR</name>
-	<description>Crucero wp #14</description>
+	<description>Crucero wp #15</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -201,7 +211,7 @@
 </Placemark>
 <Placemark>
 	<name>VANAD</name>
-	<description>Crucero wp #15</description>
+	<description>Crucero wp #16</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -210,7 +220,7 @@
 </Placemark>
 <Placemark>
 	<name>AMB</name>
-	<description>Crucero wp #16</description>
+	<description>Crucero wp #17</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -219,7 +229,7 @@
 </Placemark>
 <Placemark>
 	<name>SOPIL</name>
-	<description>Crucero wp #17</description>
+	<description>Crucero wp #18</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -228,7 +238,7 @@
 </Placemark>
 <Placemark>
 	<name>BALAN</name>
-	<description>Crucero wp #18</description>
+	<description>Crucero wp #19</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -237,7 +247,7 @@
 </Placemark>
 <Placemark>
 	<name>EVPOK</name>
-	<description>Crucero wp #19</description>
+	<description>Crucero wp #20</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -246,7 +256,7 @@
 </Placemark>
 <Placemark>
 	<name>NARAK</name>
-	<description>Crucero wp #20</description>
+	<description>Crucero wp #21</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -255,7 +265,7 @@
 </Placemark>
 <Placemark>
 	<name>GAI</name>
-	<description>Crucero wp #21</description>
+	<description>Crucero wp #22</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -264,7 +274,7 @@
 </Placemark>
 <Placemark>
 	<name>LOMRA</name>
-	<description>Crucero wp #22</description>
+	<description>Crucero wp #23</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -273,7 +283,7 @@
 </Placemark>
 <Placemark>
 	<name>ROCAN</name>
-	<description>Crucero wp #23</description>
+	<description>Crucero wp #24</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -282,7 +292,7 @@
 </Placemark>
 <Placemark>
 	<name>IBRAP</name>
-	<description>Crucero wp #24</description>
+	<description>Crucero wp #25</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -291,7 +301,7 @@
 </Placemark>
 <Placemark>
 	<name>LUKEV</name>
-	<description>Crucero wp #25</description>
+	<description>Crucero wp #26</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
@@ -300,7 +310,7 @@
 </Placemark>
 <Placemark>
 	<name>LORES</name>
-	<description>Crucero wp #26</description>
+	<description>Crucero wp #27</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>

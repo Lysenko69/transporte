@@ -43,9 +43,10 @@
 			<tessellate>1</tessellate>
 			<altitudeMode>clampToGround</altitudeMode>
 			<coordinates>
-			-2.220144,53.008458,0.000000 
-			-1.487772,52.371658,0.000000 
-			-1.177635,51.775332,0.000000 
+			-2.334167,53.139444,0.000000 
+			-2.186916,53.010205,0.000000 
+			-1.489565,52.371506,0.000000 
+			-1.177638,51.775332,0.000000 
 			-1.262587,51.654016,0.000000 
 			-1.179113,51.496019,0.000000 
 			-1.125299,51.397110,0.000000 
@@ -74,11 +75,19 @@
 	</MultiGeometry>
 </Placemark>
 <Placemark>
+	<name>SANBA</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.334167,53.139444,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
 	<name>UTXA</name>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
-		<coordinates>-2.220144,53.008458,0.000000 </coordinates>
+		<coordinates>-2.186916,53.010205,0.000000 </coordinates>
 	</Point>
 </Placemark>
 <Placemark>
@@ -86,7 +95,7 @@
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
-		<coordinates>-1.487772,52.371658,0.000000 </coordinates>
+		<coordinates>-1.489565,52.371506,0.000000 </coordinates>
 	</Point>
 </Placemark>
 <Placemark>
@@ -94,7 +103,7 @@
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
-		<coordinates>-1.177635,51.775332,0.000000 </coordinates>
+		<coordinates>-1.177638,51.775332,0.000000 </coordinates>
 	</Point>
 </Placemark>
 <Placemark>

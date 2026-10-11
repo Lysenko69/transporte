@@ -26,17 +26,15 @@ wp(7).name='Aux5';
 [wp(7).lat, wp(7).lon]=orto_reckon(wp(6).lat, wp(6).lon, 0.66*NM2m, 15 + 180);
 wp(8)=create_wp();
 wp(8).name='Aux6';
-[wp(8).lat, wp(8).lon]=orto_reckon(wp(7).lat, wp(7).lon, 0.37*NM2m, 177);wp(8)=create_wp();
-wp(8).name='Aux6';
 [wp(8).lat, wp(8).lon]=orto_reckon(wp(7).lat, wp(7).lon, 0.37*NM2m, 177);
 wp(9)=create_wp();
 wp(9).name='TABLY';
 wp(9).lat= sex2dec('N053°16''19.00"'); % Coordenadas TABLY
 wp(9).lon= sex2dec('W002°27''02.00"');
-wp(9)=create_wp();
-wp(9).name='SANBA';
-wp(9).lat= sex2dec('N053°08''22.00"'); % Coordenadas SANBA
-wp(9).lon= sex2dec('W002°20''03.00"');
+wp(10)=create_wp();
+wp(10).name='SANBA';
+wp(10).lat= sex2dec('N053°08''22.00"'); % Coordenadas SANBA
+wp(10).lon= sex2dec('W002°20''03.00"');
 
 attr1 = default_attr('ff0000ff', 3, 'SID');   % rojo opaco (aabbggrr), grosor 3
 kmlwrite_polyline(wp, 'EGCC_SANBA1R.kml', attr1);

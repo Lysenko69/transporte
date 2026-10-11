@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>EGCC-LEPA-sinviento.kml</name>
+<Style id="inline0">
+	<LineStyle>
+		<color>ff0000ff</color>
+		<width>3</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>0</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/shapes/triangle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>ffffffff</color>
+		<scale>1</scale>
+	</LabelStyle>
+</Style>
+<Style id="inline1">
+	<LineStyle>
+		<color>ff0000ff</color>
+		<width>3</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>0.6</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/shapes/triangle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>ffffffff</color>
+		<scale>0.8</scale>
+	</LabelStyle>
+</Style>
+<Placemark>
+	<name>Ruta sin viento</name>
+	<styleUrl>#inline0</styleUrl>
+	<MultiGeometry>
+		<Point>
+			<altitudeMode>clampToGround</altitudeMode>
+			<coordinates>0.635378,48.522322,0.000000</coordinates>
+		</Point>
+		<LineString>
+			<extrude>0</extrude>
+			<tessellate>1</tessellate>
+			<altitudeMode>clampToGround</altitudeMode>
+			<coordinates>
+			-2.220144,53.008458,0.000000 
+			-1.663725,52.356678,0.000000 
+			-1.361353,51.771389,0.000000 
+			-1.299853,51.650358,0.000000 
+			-1.219692,51.491572,0.000000 
+			-1.149489,51.396319,0.000000 
+			-1.045111,51.253881,0.000000 
+			-0.756736,50.855219,0.000000 
+			-0.000000,50.100000,0.000000 
+			0.163333,49.683333,0.000000 
+			0.312722,49.310750,0.000000 
+			0.530278,48.790611,0.000000 
+			0.635278,48.522222,0.000000 
+			0.744444,48.253056,0.000000 
+			0.907222,47.837222,0.000000 
+			1.064444,47.428917,0.000000 
+			1.055000,47.025833,0.000000 
+			1.033333,46.516111,0.000000 
+			1.376250,45.474167,0.000000 
+			1.748889,44.295278,0.000000 
+			1.824167,43.954056,0.000000 
+			1.883056,43.344167,0.000000 
+			1.946667,42.673333,0.000000 
+			2.058528,42.361583,0.000000 
+			2.268611,41.766111,0.000000 
+			2.702500,40.500000,0.000000 
+			</coordinates>
+		</LineString>
+	</MultiGeometry>
+</Placemark>
+<Placemark>
+	<name>UTXA</name>
+	<description>Crucero wp #1</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.220144,53.008458,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>HON</name>
+	<description>Crucero wp #2</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.663725,52.356678,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>KIDLI</name>
+	<description>Crucero wp #3</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.361353,51.771389,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>DIGUT</name>
+	<description>Crucero wp #4</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.299853,51.650358,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>CPT</name>
+	<description>Crucero wp #5</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.219692,51.491572,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>ALHAD</name>
+	<description>Crucero wp #6</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.149489,51.396319,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>VAPID</name>
+	<description>Crucero wp #7</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-1.045111,51.253881,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>GWC</name>
+	<description>Crucero wp #8</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-0.756736,50.855219,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>SITET</name>
+	<description>Crucero wp #9</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-0.000000,50.100000,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>ETRAT</name>
+	<description>Crucero wp #10</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.163333,49.683333,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>DVL</name>
+	<description>Crucero wp #11</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.312722,49.310750,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>LGL</name>
+	<description>Crucero wp #12</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.530278,48.790611,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>SORAP</name>
+	<description>Crucero wp #13</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.635278,48.522222,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>BENAR</name>
+	<description>Crucero wp #14</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.744444,48.253056,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>VANAD</name>
+	<description>Crucero wp #15</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>0.907222,47.837222,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>AMB</name>
+	<description>Crucero wp #16</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.064444,47.428917,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>SOPIL</name>
+	<description>Crucero wp #17</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.055000,47.025833,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>BALAN</name>
+	<description>Crucero wp #18</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.033333,46.516111,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>EVPOK</name>
+	<description>Crucero wp #19</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.376250,45.474167,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>NARAK</name>
+	<description>Crucero wp #20</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.748889,44.295278,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>GAI</name>
+	<description>Crucero wp #21</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.824167,43.954056,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>LOMRA</name>
+	<description>Crucero wp #22</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.883056,43.344167,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>ROCAN</name>
+	<description>Crucero wp #23</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>1.946667,42.673333,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>IBRAP</name>
+	<description>Crucero wp #24</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>2.058528,42.361583,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>LUKEV</name>
+	<description>Crucero wp #25</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>2.268611,41.766111,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>LORES</name>
+	<description>Crucero wp #26</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>2.702500,40.500000,0.000000 </coordinates>
+	</Point>
+</Placemark>
+</Document>
+</kml>

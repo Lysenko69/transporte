@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>EGCC_SANBA1R.kml</name>
+<Style id="inline0">
+	<LineStyle>
+		<color>ff0000ff</color>
+		<width>3</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>0</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/shapes/triangle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>ffffffff</color>
+		<scale>1</scale>
+	</LabelStyle>
+</Style>
+<Style id="inline1">
+	<LineStyle>
+		<color>ff0000ff</color>
+		<width>3</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>0.6</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/shapes/triangle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>ffffffff</color>
+		<scale>0.8</scale>
+	</LabelStyle>
+</Style>
+<Placemark>
+	<name>SID</name>
+	<styleUrl>#inline0</styleUrl>
+	<MultiGeometry>
+		<Point>
+			<altitudeMode>clampToGround</altitudeMode>
+			<coordinates>-2.448179,53.317148,0.000000</coordinates>
+		</Point>
+		<LineString>
+			<extrude>0</extrude>
+			<tessellate>1</tessellate>
+			<altitudeMode>clampToGround</altitudeMode>
+			<coordinates>
+			-2.262222,53.356944,0.000000 
+			-2.329139,53.326937,0.000000 
+			-2.392354,53.326965,0.000000 
+			-2.428890,53.324286,0.000000 
+			-2.448279,53.317048,0.000000 
+			-2.459312,53.307634,0.000000 
+			-2.464073,53.297016,0.000000 
+			-2.463534,53.290862,0.000000 
+			-2.450556,53.271944,0.000000 
+			-2.334167,53.139444,0.000000 
+			</coordinates>
+		</LineString>
+	</MultiGeometry>
+</Placemark>
+<Placemark>
+	<name>EGCC</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.262222,53.356944,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MCT D3</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.329139,53.326937,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MCT D5</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.392354,53.326965,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>Aux1</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.428890,53.324286,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>Aux2</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.448279,53.317048,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>Aux3</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.459312,53.307634,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>Aux4</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.464073,53.297016,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>Aux5</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.463534,53.290862,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>TABLY</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.450556,53.271944,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>SANBA</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.334167,53.139444,0.000000 </coordinates>
+	</Point>
+</Placemark>
+</Document>
+</kml>

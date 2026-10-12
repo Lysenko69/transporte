@@ -32,9 +32,12 @@ wp(9).name='TABLY';
 wp(9).lat= sex2dec('N053°16''19.00"'); % Coordenadas TABLY
 wp(9).lon= sex2dec('W002°27''02.00"');
 wp(10)=create_wp();
-wp(10).name='SANBA';
-wp(10).lat= sex2dec('N053°08''22.00"'); % Coordenadas SANBA
-wp(10).lon= sex2dec('W002°20''03.00"');
+wp(10).name='HON D58';
+[wp(10).lat, wp(10).lon]=orto_reckon(sex2dec('N052°21''24.00"'),sex2dec('W001°39''49.00"'), 58*NM2m, 152 + 180);
+wp(11)=create_wp();
+wp(11).name='SANBA';
+wp(11).lat= sex2dec('N053°08''22.00"'); % Coordenadas SANBA
+wp(11).lon= sex2dec('W002°20''03.00"');
 
 attr1 = default_attr('ff0000ff', 3, 'SID');   % rojo opaco (aabbggrr), grosor 3
 kmlwrite_polyline(wp, 'EGCC_SANBA1R.kml', attr1);

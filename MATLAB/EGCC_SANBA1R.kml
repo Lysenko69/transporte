@@ -36,7 +36,7 @@
 	<MultiGeometry>
 		<Point>
 			<altitudeMode>clampToGround</altitudeMode>
-			<coordinates>-2.448179,53.317148,0.000000</coordinates>
+			<coordinates>-2.459212,53.307734,0.000000</coordinates>
 		</Point>
 		<LineString>
 			<extrude>0</extrude>
@@ -52,6 +52,7 @@
 			-2.464073,53.297016,0.000000 
 			-2.463534,53.290862,0.000000 
 			-2.450556,53.271944,0.000000 
+			-2.413463,53.209608,0.000000 
 			-2.334167,53.139444,0.000000 
 			</coordinates>
 		</LineString>
@@ -127,6 +128,14 @@
 	<Point>
 		<altitudeMode>clampToGround</altitudeMode>
 		<coordinates>-2.450556,53.271944,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>HON D58</name>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>clampToGround</altitudeMode>
+		<coordinates>-2.413463,53.209608,0.000000 </coordinates>
 	</Point>
 </Placemark>
 <Placemark>

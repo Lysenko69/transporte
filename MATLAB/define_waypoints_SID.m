@@ -6,9 +6,11 @@ wp_sid(1)=create_wp();
 wp_sid(1).name='EGCC';
 wp_sid(1).lat= sex2dec('N053°21''25.00"'); % Coordenadas MCT
 wp_sid(1).lon= sex2dec('W002°15''44.00"');
+
 wp_sid(2)=create_wp();
 wp_sid(2).name='MCT D3'; %Rumbo de pista, MCT D3
 [wp_sid(2).lat, wp_sid(2).lon]=loxo_reckon(wp_sid(1).lat, wp_sid(1).lon, 3*NM2m, 233.09);
+
 wp_sid(3)=create_wp();
 wp_sid(3).name='MCT D5'; % Primer punto auxiliar, R248.9, MCT D5
 [wp_sid(3).lat, wp_sid(3).lon]=loxo_reckon(wp_sid(1).lat, wp_sid(1).lon, 5*NM2m, 248.9);

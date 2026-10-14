@@ -23,12 +23,12 @@ wp_iac(5).name='TAKUS';
 wp_iac(5).lat= sex2dec('N039º46''28.00"'); 
 wp_iac(5).lon= sex2dec('E002º49''17.00"' );
 wp_iac(6)=create_wp();
-wp_iac(6).name='EVOLI',
+wp_iac(6).name='EVOLI';
 wp_iac(6).lat= sex2dec('N039º42''56.00"'); 
 wp_iac(6).lon= sex2dec('E002º42''35.00"' );
 wp_iac(7)=create_wp();
 wp_iac(7).name='ANDRAITX';
-wp_iac(7).lat= sex2dec('N39º32''58.00"'); 
+wp_iac(7).lat= sex2dec('N039º32''58.00"'); 
 wp_iac(7).lon= sex2dec('E002º23''45.00"');
 
 attr1 = default_attr('ff0000ff', 3, 'STAR_LORES4M');   % rojo opaco (aabbggrr), grosor 3

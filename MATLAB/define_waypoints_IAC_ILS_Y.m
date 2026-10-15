@@ -1,16 +1,16 @@
 clear; clc;
-addpath('./kgbx-lib/kml','./kgbx-lib/geo','matlab_utilities');
+addpath('./matlab_utilities/kgbx-lib/kml','./matlab_utilities/kgbx-lib/geo');
 NM2m = 1852;   % metros por milla nautica
 
-lat_VOR_JOA = 'N039°33''53"';
-lon_VOR_JOA = 'E002°44''48"';
-lat0 = sex2dec(lat_VOR_JOA);   % grados decimales
-lon0 = sex2dec(lon_VOR_JOA);
+% Coordenadas JOA en grados decimales
+lat0 = 39 + 33/60 + 53/3600;
+lon0 = 2 + 44/60 + 48/3600;
 
 wp_iac(1)=create_wp();
 wp_iac(1).name='ANDRAITX';
-wp_iac(1).lat= sex2dec('N039°32''58"');
-wp_iac(1).lon= sex2dec('E002°23''45"');
+% Coordenadas ANDRAITX en grados decimales
+wp_iac(1).lat = 39 + 32/60 + 58/3600;
+wp_iac(1).lon = 2 + 23/60 + 45/3600;
 wp_iac(2)=create_wp();
 wp_iac(2).name='Aux1'; %R-257, 14.93 DME JOA
 [wp_iac(2).lat, wp_iac(2).lon]=loxo_reckon(lat0, lon0, 14.93*NM2m, 270 - 12.8);

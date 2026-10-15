@@ -8,7 +8,7 @@
 % Total_dist es la distancia acumulada desde el primer fijo hasta cada fijo.
 
 clear; clc;
-addpath('./kgbx-lib/kml','./kgbx-lib/geo','matlab_utilities');
+addpath('./matlab_utilities/kgbx-lib/kml','./matlab_utilities/kgbx-lib/geo');
 NM2m = 1852;   % metros por milla nautica
 
 % ---------------------------------------------------------------------

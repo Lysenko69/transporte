@@ -1,6 +1,7 @@
 clear; clc;
-addpath('./matlab_utilities/kgbx-lib/kml','./matlab_utilities/kgbx-lib/geo');
+addpath('./matlab_utilities/kgbx-lib/kml','./matlab_utilities/kgbx-lib/geo','./matlab_utilities');
 NM2m = 1852;   % metros por milla nautica
+N = 11;
 
 wp_sid(1)=create_wp();
 wp_sid(1).name='EGCC';
@@ -12,7 +13,7 @@ wp_sid(2).name='MCT D3'; %Rumbo de pista, MCT D3
 [wp_sid(2).lat, wp_sid(2).lon]=loxo_reckon(wp_sid(1).lat, wp_sid(1).lon, 3*NM2m, 233.09);
 
 wp_sid(3)=create_wp();
-wp_sid(3).name='MCT D5'; % Primer punto auxiliar, R248.9, MCT D5
+wp_sid(3).name='MCT D5'; % R248.9, MCT D5
 [wp_sid(3).lat, wp_sid(3).lon]=loxo_reckon(wp_sid(1).lat, wp_sid(1).lon, 5*NM2m, 248.9);
 wp_sid(4)=create_wp();
 wp_sid(4).name='Aux1';
@@ -41,11 +42,24 @@ wp_sid(11).name='SANBA';
 wp_sid(11).lat= sex2dec('N053°08''22.00"'); % Coordenadas SANBA
 wp_sid(11).lon= sex2dec('W002°20''03.00"');
 
-for i = 1:11
-    wp_sid(i).alt_min = 0;
-    wp_sid(i).alt_max = 0;
+wp_sid(1).Total_dist = 0;
+
+for i = 1:N-1
+    [s, a12, ~] = loxo_distazi(wp_sid(i).lat, wp_sid(i).lon, wp_sid(i+1).lat, wp_sid(i+1).lon);
+    wp_sid(i).track        = mod(a12, 360);                              % derrota inicial del tramo (grados)
+    wp_sid(i).dist         = s;                         % distancia del tramo (NM)
+    wp_sid(i+1).Total_dist = wp_sid(i).Total_dist + wp_sid(i).dist;    % acumulada hasta wp_sid(i+1)
+end
+wp_sid(10).alt_min = 3000;  %HOND58
+wp_sid(11).alt_min = 5000; 
+pendiente = wp_sid(10).alt_min / wp_sid(10).Total_dist ;
+for k = 1:N
+    wp_sid(k).alt_max = 5000;
+    if k < 10
+        wp_sid(k).alt_min = pendiente * wp_sid(k).Total_dist;
+    end
 end
 
 attr1 = default_attr('ff0000ff', 3, 'SID');   % rojo opaco (aabbggrr), grosor 3
 kmlwrite_polyline(wp_sid, 'EGCC_SANBA1R.kml', attr1);
-%myxlswrite_ENR('EGCC_SANBA1R', wp_sid);
+myxlswrite_ENR('EGCC_SANBA1R', wp_sid);

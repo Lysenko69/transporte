@@ -1,19 +1,26 @@
-% DEFINE_WAYPOINTS  Define a mano los fijos de la fase en-ruta (crucero).
-% Rellena la matriz de structs wp con nombre, coordenadas, limites de nivel
-% de vuelo y calcula derrota y distancia de cada tramo con la libreria GEO.
-% Los valores de derrota y distancia de la tabla se usan solo para comprobar.
-%
-% Criterio: cada fijo guarda la derrota (track) y la distancia (dist) del
-% tramo que SALE de el hacia el siguiente fijo. El ultimo fijo tiene 0.
-% Total_dist es la distancia acumulada desde el primer fijo hasta cada fijo.
+% define_waypoints.m  Fase de crucero EGCC-LEPA (de SANBA a POSBA)
+% Calcula la ruta por aerovías sin viento y con viento (triángulo de
+% velocidades, TAS = 450 kt) y compara los tiempos de vuelo.
+% Entrada (definida en el propio script):
+%   D          = tabla de fijos: nombre, lat/lon (sexagesimal), FL mín/máx
+%   wdir, wspd = previsión de viento en cada fijo (plan LIDO, FL390)
+% Salida:
+%   EGCC-LEPA-sinviento.kml / .xlsx = ruta y tabla sin viento
+%   EGCC-LEPA-viento.kml / .xlsx    = ruta y tabla con viento
+%   Tiempos totales de ambos casos por pantalla [min]
+% Funciones usadas: create_wp, computeWT, loxo_distazi, sex2dec,
+%                   kmlwrite_polyline, myxlswrite_ENR
 
 clear; clc;
-addpath('./matlab_utilities/kgbx-lib/kml','./matlab_utilities/kgbx-lib/geo','./matlab_utilities');
-NM2m = 1852;   % metros por milla nautica
+addpath('kgbx-lib/kml','kgbx-lib/geo','matlab_utilities');
+
+NM2m = 1852;      % metros por milla náutica
+ms2kts = 1.944;   % factor m/s -> kt
+V_crucero = 450;  % TAS de crucero [kt]
 
 % ---------------------------------------------------------------------
 % Tabla de fijos: nombre | lat [g m s] | lon [g m s] |
-%                 FL minimo | FL maximo | derrota tabla | dist tabla (NM)
+%                 FL mínimo | FL máximo | derrota tabla | dist tabla (NM)
 % ---------------------------------------------------------------------
 D = {
  'SANBA', 'N053°08''22.00"', 'W002°20''03.00"', 245,460,152,8.9;
@@ -47,17 +54,17 @@ D = {
 };
 
 N = size(D,1);
-Nw = N - 1; 
+Nw = N - 1;
 
 % ---------------------------------------------------------------------
-% Creacion de los fijos (se crean los N, incluido POSBA, para poder
-% calcular el ultimo tramo; POSBA se elimina antes de las salidas)
+% Creación de los fijos (se crean los N, incluido POSBA, para poder
+% calcular el último tramo; POSBA se elimina antes de las salidas)
 % ---------------------------------------------------------------------
 for i = 1:N                         % primero se crean todos con los mismos campos
     wp(i) = create_wp();
 end
 
-for i = 1:N                         % despues se rellenan (y se anaden campos extra)
+for i = 1:N                         % después se rellenan (y se añaden campos extra)
     wp(i).name    = D{i,1};
     wp(i).lat     = sex2dec(D{i,2});
     wp(i).lon     = sex2dec(D{i,3});
@@ -67,71 +74,76 @@ for i = 1:N                         % despues se rellenan (y se anaden campos ex
 end
 
 % ---------------------------------------------------------------------
-% Prevision de viento en cada fijo (plan LIDO de SimBrief, FL390)
+% Previsión de viento en cada fijo (plan LIDO de SimBrief, FL390)
 % ---------------------------------------------------------------------
 wdir = [265 262 268 261 260 267 268 269 273 279 278 290 293 293 297 297 312 312 312 345   5   4  12  12  19  19   5];
 wspd = [61 66  84  72  70  67  65  61  53  54  54  60  61  61  52  52  44  44  44  44  50  49  50  49  52  52  56];
+
 for i = 1:N-1
-    wp(i).wdir = wdir(i);   % direccion DESDE la que sopla (grados)
-    wp(i).wind = wspd(i);   % velocidad (kt)
+    wp(i).wdir = wdir(i);   % dirección DESDE la que sopla [deg]
+    wp(i).wind = wspd(i);   % velocidad [kt]
 end
 
 % ---------------------------------------------------------------------
-% Derrota y distancia de cada tramo Loxodrómica de rumbo constante
+% Caso sin viento: derrota, distancia y tiempo de cada tramo
+% (loxodrómica de rumbo constante)
 % ---------------------------------------------------------------------
-wp(1).Total_dist = 0;
+wp(1).Total_dist = 0; wp(1).time = 0;
 for i = 1:N-1
     [s, a12, ~] = loxo_distazi(wp(i).lat, wp(i).lon, wp(i+1).lat, wp(i+1).lon);
-    wp(i).track        = mod(a12, 360);                              % derrota inicial del tramo (grados)
-    wp(i).dist         = s / NM2m;                         % distancia del tramo (NM)
-    wp(i+1).Total_dist = wp(i).Total_dist + wp(i).dist;    % acumulada hasta wp(i+1)
+    wp(i).track        = mod(a12, 360);                    % derrota inicial del tramo [deg]
+    wp(i).dist         = s / NM2m;                         % distancia del tramo [NM]
+    wp(i+1).time       = wp(i).time + (wp(i).dist*NM2m / (V_crucero/ms2kts));  % [s]
+    wp(i+1).Total_dist = wp(i).Total_dist + wp(i).dist;    % acumulada hasta wp(i+1) [NM]
 end
 
 % ---------------------------------------------------------------------
-% Generación de nuevo wp_v, resolviendo triángulo de velocidades.
+% Caso con viento: nueva ruta wp_v resolviendo el triángulo de velocidades.
+% Cada tramo parte de la posición realmente alcanzada en el anterior.
 % ---------------------------------------------------------------------
-
 for i = 1:N
     wp_v(i) = create_wp();
 end
 
-for i = 1:N-1                     
-    wp_v(i).name    = D{i,1};
+for i = 1:N-1
+    wp_v(i).name = D{i,1};
 end
 
 wp_v(1).Total_dist = 0;
 wp_v(1).lat = wp(1).lat;
 wp_v(1).lon = wp(1).lon;
 
-for i = 1:N-1                     
+for i = 1:N-1
     [GS, track, latD, lonD, s, a12, t] = computeWT(wp_v(i).lat, wp_v(i).lon, wp(i+1).lat, wp(i+1).lon, wp(i).wind, wp(i).wdir);
-    wp_v(i+1).lat = latD;
+    wp_v(i+1).lat = latD;                                  % posición real alcanzada
     wp_v(i+1).lon = lonD;
     wp_v(i).track = track;
     wp_v(i).gs = GS;
-    
+
     wp_v(i).dist = s / NM2m;
-    wp_v(i+1).Total_dist = wp_v(i).Total_dist + wp_v(i).dist;    % acumulada hasta wp(i+1)
-    wp_v(i+1).time = wp_v(i).time + t;
+    wp_v(i+1).Total_dist = wp_v(i).Total_dist + wp_v(i).dist;   % acumulada [NM]
+    wp_v(i+1).time = wp_v(i).time + t;                          % acumulado [s]
 
     wp_v(i).alt_min = wp(i).alt_min;
     wp_v(i).alt_max = wp(i).alt_max;
-    
 end
 
 % ---------------------------------------------------------------------
-% Se elimina POSBA (solo era el destino del ultimo tramo) -> 26 fijos
+% Se elimina POSBA (solo era el destino del último tramo) -> 26 fijos
 % ---------------------------------------------------------------------
 wp(N)   = [];
 wp_v(N) = [];
 
 % ---------------------------------------------------------------------
-% Salidas
+% Salidas: KML (Google Earth), tablas Excel y tiempos totales
 % ---------------------------------------------------------------------
-attr1 = default_attr('ff0000ff', 3, 'Ruta sin viento');   % rojo opaco (aabbggrr), grosor 3
+attr1 = default_attr('ff0000ff', 3, 'Ruta sin viento');   % aabbggrr, grosor 3
 kmlwrite_polyline(wp, 'EGCC-LEPA-sinviento.kml', attr1);
 myxlswrite_ENR('EGCC-LEPA-sinviento', wp);
 
-attr2 = default_attr('ffff0000', 3, 'Ruta con viento');   % rojo opaco (aabbggrr), grosor 3
+attr2 = default_attr('ffff0000', 3, 'Ruta con viento');   % aabbggrr, grosor 3
 kmlwrite_polyline(wp_v, 'EGCC-LEPA-viento.kml', attr2);
 myxlswrite_ENR('EGCC-LEPA-viento', wp_v);
+
+fprintf('Tiempo sin viento [min]: %.2f\n', wp(end).time/60);
+fprintf('Tiempo con viento [min]: %.2f\n', wp_v(end).time/60);

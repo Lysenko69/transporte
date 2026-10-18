@@ -74,17 +74,6 @@ for i = 1:N                         % después se rellenan (y se añaden campos 
 end
 
 % ---------------------------------------------------------------------
-% Previsión de viento en cada fijo (plan LIDO de SimBrief, FL390)
-% ---------------------------------------------------------------------
-wdir = [265 262 268 261 260 267 268 269 273 279 278 290 293 293 297 297 312 312 312 345   5   4  12  12  19  19   5];
-wspd = [61 66  84  72  70  67  65  61  53  54  54  60  61  61  52  52  44  44  44  44  50  49  50  49  52  52  56];
-
-for i = 1:N-1
-    wp(i).wdir = wdir(i);   % dirección DESDE la que sopla [deg]
-    wp(i).wind = wspd(i);   % velocidad [kt]
-end
-
-% ---------------------------------------------------------------------
 % Caso sin viento: derrota, distancia y tiempo de cada tramo
 % (loxodrómica de rumbo constante)
 % ---------------------------------------------------------------------
@@ -92,21 +81,30 @@ wp(1).Total_dist = 0; wp(1).time = 0;
 for i = 1:N-1
     [s, a12, ~] = loxo_distazi(wp(i).lat, wp(i).lon, wp(i+1).lat, wp(i+1).lon);
     wp(i).track        = mod(a12, 360);                    % derrota inicial del tramo [deg]
-    wp(i).dist         = s / NM2m;                         % distancia del tramo [NM]
-    wp(i+1).time       = wp(i).time + (wp(i).dist*NM2m / (V_crucero/ms2kts));  % [s]
+    wp(i).dist         = s ;                               % distancia del tramo [m]
+    wp(i+1).time = wp(i).time + (wp(i).dist / (V_crucero/ms2kts));   % [s]  % [s]
     wp(i+1).Total_dist = wp(i).Total_dist + wp(i).dist;    % acumulada hasta wp(i+1) [NM]
+    wp(i).wind = 0;
+    wp(i).wdir = 0;
+    wp(i).gs = V_crucero;
 end
 
 % ---------------------------------------------------------------------
 % Caso con viento: nueva ruta wp_v resolviendo el triángulo de velocidades.
 % Cada tramo parte de la posición realmente alcanzada en el anterior.
 % ---------------------------------------------------------------------
+
+wdir = [265 262 268 261 260 267 268 269 273 279 278 290 293 293 297 297 312 312 312 345   5   4  12  12  19  19   5];
+wspd = [61 66  84  72  70  67  65  61  53  54  54  60  61  61  52  52  44  44  44  44  50  49  50  49  52  52  56];
+
 for i = 1:N
     wp_v(i) = create_wp();
 end
 
 for i = 1:N-1
     wp_v(i).name = D{i,1};
+    wp_v(i).wdir = wdir(i);   % dirección DESDE la que sopla [deg]
+    wp_v(i).wind = wspd(i);   % velocidad [kt]
 end
 
 wp_v(1).Total_dist = 0;
@@ -114,13 +112,13 @@ wp_v(1).lat = wp(1).lat;
 wp_v(1).lon = wp(1).lon;
 
 for i = 1:N-1
-    [GS, track, latD, lonD, s, a12, t] = computeWT(wp_v(i).lat, wp_v(i).lon, wp(i+1).lat, wp(i+1).lon, wp(i).wind, wp(i).wdir);
+    [GS, track, latD, lonD, s, a12, t] = computeWT(wp_v(i).lat, wp_v(i).lon, wp(i+1).lat, wp(i+1).lon, wp_v(i).wind, wp_v(i).wdir);
     wp_v(i+1).lat = latD;                                  % posición real alcanzada
     wp_v(i+1).lon = lonD;
     wp_v(i).track = track;
     wp_v(i).gs = GS;
 
-    wp_v(i).dist = s / NM2m;
+    wp_v(i).dist = s ;                                          % distancia del tramo [m]
     wp_v(i+1).Total_dist = wp_v(i).Total_dist + wp_v(i).dist;   % acumulada [NM]
     wp_v(i+1).time = wp_v(i).time + t;                          % acumulado [s]
 
@@ -133,6 +131,47 @@ end
 % ---------------------------------------------------------------------
 wp(N)   = [];
 wp_v(N) = [];
+
+
+% ---------------------------------------------------------------------
+% Diferencia entre los dos (con viento - sin viento) -> nuevo wp_d
+% Se aprovecha la misma estructura que myxlswrite_ENR ya sabe escribir:
+%   lat, lon   = diferencia de coordenadas [deg]
+%   track      = diferencia de derrota [deg] (envuelta a +-180)
+%   dist       = diferencia de distancia del tramo [m]
+%   Total_dist = diferencia de distancia acumulada [m]
+%   gs         = diferencia de velocidad sobre el terreno [kt]
+%   time       = diferencia de tiempo acumulado [s]
+%   wind, wdir = viento (se copia, no es una diferencia)
+% Ademas se calcula la desviacion de la posicion real respecto al fijo [NM].
+% ---------------------------------------------------------------------
+M = numel(wp);                     % fijos tras eliminar POSBA (N-1)
+ 
+for i = 1:M                        % primero se crean todos con los mismos campos
+    wp_d(i) = create_wp();
+end
+ 
+desv = zeros(M,1);                 % desviacion respecto al fijo [NM]
+for i = 1:M
+    wp_d(i).name       = wp(i).name;
+    wp_d(i).lat        = wp_v(i).lat - wp(i).lat;
+    wp_d(i).lon        = wp_v(i).lon - wp(i).lon;
+    wp_d(i).alt_min    = wp(i).alt_min;
+    wp_d(i).alt_max    = wp(i).alt_max;
+    wp_d(i).track      = mod(wp_v(i).track - wp(i).track + 180, 360) - 180;
+    wp_d(i).dist       = wp_v(i).dist       - wp(i).dist;
+    wp_d(i).Total_dist = wp_v(i).Total_dist - wp(i).Total_dist;
+    wp_d(i).wind       = wp_v(i).wind;
+    wp_d(i).wdir       = wp_v(i).wdir;
+    wp_d(i).gs         = wp_v(i).gs   - wp(i).gs;
+    wp_d(i).time       = wp_v(i).time - wp(i).time;
+    wp_d(i).desc       = sprintf('Diferencia wp #%d', i);
+ 
+    if i > 1                       % en el primer fijo ambas rutas coinciden
+        [s_dev, ~, ~] = loxo_distazi(wp(i).lat, wp(i).lon, wp_v(i).lat, wp_v(i).lon);
+        desv(i) = s_dev / NM2m;
+    end
+end
 
 % ---------------------------------------------------------------------
 % Salidas: KML (Google Earth), tablas Excel y tiempos totales
@@ -147,3 +186,6 @@ myxlswrite_ENR('EGCC-LEPA-viento', wp_v);
 
 fprintf('Tiempo sin viento [min]: %.2f\n', wp(end).time/60);
 fprintf('Tiempo con viento [min]: %.2f\n', wp_v(end).time/60);
+
+% Diferencias (con viento - sin viento): mismo formato de tabla que las demas
+myxlswrite_ENR('EGCC-LEPA-diferencias', wp_d);
